@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ślub Agnieszki i Jakuba • 10 Kwietnia 2027, godz. 14:00</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            script: ['"Alex Brush"', 'cursive'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+          colors: {
+            wedding: {
+              cream: '#FDFBF7',
+              rose: '#F4DFD8',
+              blush: '#FBECEB',
+              sage: '#8FA382',
+              sagedark: '#556B4A',
+              gold: '#C5A059',
+              goldlight: '#EAD7A5',
+              charcoal: '#333333'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar & Selection */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FDFBF7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C5A059;
+      border-radius: 9999px;
+    }
+    ::selection {
+      background: #F4DFD8;
+      color: #556B4A;
+    }
+
+    /* Ambient Gold Shimmer */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #B8860B 0%, #D4AF37 50%, #8B6508 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .gold-border-glow {
+      box-shadow: 0 10px 35px -5px rgba(197, 160, 89, 0.25), 0 0 0 1px rgba(197, 160, 89, 0.35);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+    }
+
+    /* Floating / Swaying Animations */
+    @keyframes gentleSway {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(1deg); }
+    }
+    .sway-element {
+      animation: gentleSway 6s ease-in-out infinite;
+    }
+
+    /* Burst effect particles */
+    .burst-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+      animation: floatUpFade 1.4s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+    }
+
+    @keyframes floatUpFade {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--tw-tx, 0px)), calc(-50% + var(--tw-ty, -90px))) scale(1.3) rotate(var(--tw-tr, 25deg));
+      }
+    }
+  </style>
+</head>
+<body class="bg-wedding-cream text-wedding-charcoal font-sans min-h-screen overflow-x-hidden relative selection:bg-rose-200">
+
+  <!-- Ambient Falling Petals Canvas -->
+  <canvas id="petalsCanvas" class="fixed inset-0 pointer-events-none z-10 w-full h-full"></canvas>
+
+  <!-- Ambient Sound Control Bar -->
+  <header class="fixed top-4 right-4 z-40 flex items-center gap-2">
+    <button id="musicToggleBtn" title="Włącz romantyczną melodię" aria-label="Melodia w tle"
+            class="group flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-wedding-gold/40 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 text-wedding-charcoal">
+      <span id="musicIcon" class="text-wedding-gold text-lg transition-transform group-hover:scale-110">🎵</span>
+      <span id="musicLabel" class="text-xs uppercase tracking-widest font-medium text-wedding-sagedark">Melodia</span>
+      <span id="musicWave" class="hidden flex items-end gap-0.5 h-3">
+        <span class="w-1 bg-wedding-gold animate-bounce rounded-full h-full"></span>
+        <span class="w-1 bg-wedding-gold animate-bounce delay-100 rounded-full h-2/3"></span>
+        <span class="w-1 bg-wedding-gold animate-bounce delay-200 rounded-full h-4/5"></span>
+      </span>
+    </button>
+  </header>
+
+  <main class="relative z-20 flex flex-col items-center justify-center min-h-screen px-4 py-12 md:py-20 max-w-5xl mx-auto">
+    
+    <!-- Top Floral Ornament -->
+    <div class="mb-4 text-center sway-element">
+      <svg class="w-24 h-10 md:w-32 md:h-12 mx-auto text-wedding-gold opacity-80" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20C30 18 45 10 70 2C95 10 110 18 130 20C110 22 95 30 70 38C45 30 30 22 10 20Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="70" cy="20" r="3" fill="currentColor"/>
+        <circle cx="50" cy="18" r="1.5" fill="currentColor"/>
+        <circle cx="90" cy="18" r="1.5" fill="currentColor"/>
+      </svg>
+      <p class="text-xs md:text-sm tracking-[0.35em] uppercase font-light text-wedding-sagedark mt-2">
+        Początek Nowego Rozdziału
+      </p>
+    </div>
+
+    <!-- Bride & Groom Names and Exact 14:00 time -->
+    <div class="text-center space-y-2 md:space-y-4">
+      <h1 class="font-script text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-wedding-charcoal leading-tight drop-shadow-sm select-none">
+        Agnieszka <span class="font-serif italic text-4xl sm:text-5xl md:text-6xl text-wedding-gold mx-2">&amp;</span> Jakub
+      </h1>
+      
+      <p class="font-serif text-xl sm:text-2xl md:text-3xl text-wedding-sagedark tracking-wide font-light">
+        Sobota, <span class="font-medium text-wedding-charcoal">10 Kwietnia 2027</span> roku
+      </p>
+      <div class="flex items-center justify-center gap-3 text-xs tracking-widest uppercase text-wedding-gold font-semibold">
+        <span class="w-8 h-px bg-wedding-gold/50"></span>
+        <span class="bg-wedding-blush px-3 py-1 rounded-full text-wedding-sagedark border border-wedding-gold/30">Godzina 14:00</span>
+        <span class="w-8 h-px bg-wedding-gold/50"></span>
+      </div>
+    </div>
+
+    <!-- Romantic Wedding Quote -->
+    <div class="max-w-xl mx-auto my-8 px-6 text-center">
+      <p class="font-serif italic text-lg sm:text-xl text-stone-600 leading-relaxed">
+        „Kwitnąca miłość jest jak wiosna – rozpromienia świat, budzi nadzieję i sprawia, że każdy dzień staje się cudem.”
+      </p>
+    </div>
+
+    <!-- Countdown Timer Container -->
+    <section aria-label="Licznik do ślubu" class="w-full my-6">
+      <div id="countdownGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-3xl mx-auto">
+        
+        <!-- Days Card -->
+        <div class="glass-card gold-border-glow rounded-3xl p-5 md:p-7 text-center relative overflow-hidden group hover:-translate-y-1 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none"></div>
+          <div class="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-wedding-charcoal tracking-tight" id="countDays">
+            000
+          </div>
+          <div class="mt-2 text-xs uppercase tracking-[0.2em] font-medium text-wedding-sagedark">
+            Dni
+          </div>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-wedding-gold/40 rounded-full"></div>
+        </div>
+
+        <!-- Hours Card -->
+        <div class="glass-card gold-border-glow rounded-3xl p-5 md:p-7 text-center relative overflow-hidden group hover:-translate-y-1 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none"></div>
+          <div class="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-wedding-charcoal tracking-tight" id="countHours">
+            00
+          </div>
+          <div class="mt-2 text-xs uppercase tracking-[0.2em] font-medium text-wedding-sagedark">
+            Godzin
+          </div>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-wedding-gold/40 rounded-full"></div>
+        </div>
+
+        <!-- Minutes Card -->
+        <div class="glass-card gold-border-glow rounded-3xl p-5 md:p-7 text-center relative overflow-hidden group hover:-translate-y-1 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none"></div>
+          <div class="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-wedding-charcoal tracking-tight" id="countMinutes">
+            00
+          </div>
+          <div class="mt-2 text-xs uppercase tracking-[0.2em] font-medium text-wedding-sagedark">
+            Minut
+          </div>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-wedding-gold/40 rounded-full"></div>
+        </div>
+
+        <!-- Seconds Card -->
+        <div class="glass-card gold-border-glow rounded-3xl p-5 md:p-7 text-center relative overflow-hidden group hover:-translate-y-1 transition duration-300">
+          <div class="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none"></div>
+          <div class="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-wedding-gold tracking-tight" id="countSeconds">
+            00
+          </div>
+          <div class="mt-2 text-xs uppercase tracking-[0.2em] font-medium text-wedding-sagedark">
+            Sekund
+          </div>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-wedding-gold/40 rounded-full"></div>
+        </div>
+
+      </div>
+
+      <!-- Wedding Finished Notification (Hidden until time arrives) -->
+      <div id="weddingArrived" class="hidden text-center p-8 glass-card rounded-3xl max-w-2xl mx-auto gold-border-glow">
+        <h2 class="font-script text-5xl md:text-6xl text-wedding-gold mb-3">To właśnie dziś!</h2>
+        <p class="font-serif text-2xl text-stone-700">Wybija godzina 14:00! Witajcie w Dniu Ślubu Agnieszki i Jakuba!</p>
+      </div>
+    </section>
+
+    <div class="flex flex-wrap items-center justify-center gap-4 mt-6">
+      
+      <!-- Add to Calendar Dropdown / Button -->
+      <div class="relative group">
+        <button id="calendarBtn" 
+                class="flex items-center gap-2 px-6 py-3 rounded-full bg-wedding-sagedark text-white font-medium text-xs sm:text-sm tracking-widest uppercase shadow-md hover:bg-opacity-95 hover:shadow-xl transition-all duration-300 transform active:scale-95">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+            <path d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"/>
+          </svg>
+          <span>Zapisz w kalendarzu</span>
+        </button>
+        <!-- Calendar Dropdown Options -->
+        <div id="calendarMenu" class="hidden absolute top-full mt-2 left-1/2 -translate-x-1/2 w-48 bg-white rounded-2xl shadow-xl border border-stone-200 overflow-hidden z-30 flex flex-col py-1">
+          <a id="googleCalLink" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 text-xs text-stone-700 hover:bg-wedding-blush text-left font-medium transition">
+            🗓️ Google Kalendarz
+          </a>
+          <button id="iCalBtn" class="px-4 py-2.5 text-xs text-stone-700 hover:bg-wedding-blush text-left font-medium transition">
+            🍎 Apple / Outlook (iCal)
+          </button>
+        </div>
+      </div>
+
+      <!-- Leave a wish button -->
+      <button id="openWishModalBtn" 
+              class="flex items-center gap-2 px-6 py-3 rounded-full glass-card border border-wedding-gold/60 text-wedding-charcoal font-medium text-xs sm:text-sm tracking-widest uppercase shadow-md hover:bg-wedding-blush hover:shadow-xl transition-all duration-300 transform active:scale-95">
+        <span>💌</span>
+        <span>Zostaw dobre słowo</span>
+      </button>
+
+      <!-- Shower of petals button -->
+      <button id="triggerConfettiBtn" 
+              class="flex items-center gap-2 px-5 py-3 rounded-full glass-card border border-stone-200 text-stone-600 hover:text-wedding-gold font-medium text-xs sm:text-sm tracking-widest uppercase shadow-sm hover:shadow transition duration-300 active:scale-95">
+        <span>🌸</span>
+        <span>Obsyp Parę Młodą</span>
+      </button>
+    </div>
+
+    <section class="w-full mt-16 max-w-4xl">
+      <div class="text-center mb-8">
+        <h3 class="font-serif text-2xl sm:text-3xl font-normal text-wedding-charcoal">
+          Księga Ciepłych Myśli i Życzeń
+        </h3>
+        <p class="text-xs uppercase tracking-widest text-wedding-sagedark mt-1">
+          Wiadomości dla Pary Młodej
+        </p>
+      </div>
+
+      <!-- Wishes List Container -->
+      <div id="wishesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+      
+      <!-- Empty state if no wishes -->
+      <div id="emptyWishesNotice" class="text-center py-6 text-stone-500 font-serif italic text-base">
+        Bądź pierwszą osobą, która podzieli się ciepłym słowem z Agnieszką i Jakubem!
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Wish Modal Dialog -->
+  <div id="wishModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 p-4">
+    <div class="glass-card bg-wedding-cream rounded-3xl p-6 sm:p-8 max-w-md w-full border border-wedding-gold/50 shadow-2xl relative transform scale-95 transition-transform duration-300" id="modalBox">
+      
+      <button id="closeWishModalBtn" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 w-8 h-8 rounded-full flex items-center justify-center bg-white/70 transition">
+        ✕
+      </button>
+
+      <div class="text-center mb-6">
+        <span class="text-3xl">🕊️</span>
+        <h4 class="font-serif text-2xl text-wedding-charcoal mt-1">Dobre słowo dla Młodych</h4>
+        <p class="text-xs text-stone-500 font-sans mt-1">Twoje życzenia zostaną zachowane w pamiątkowej księdze.</p>
+      </div>
+
+      <form id="wishForm" class="space-y-4">
+        <div>
+          <label for="authorName" class="block text-xs font-semibold uppercase tracking-wider text-wedding-sagedark mb-1">Twoje Imię / Od kogo:</label>
+          <input type="text" id="authorName" required maxlength="40" placeholder="np. Ciocia Kasia, Przyjaciele ze studiów..." 
+                 class="w-full px-4 py-2.5 rounded-xl border border-stone-200 bg-white/80 focus:bg-white focus:outline-none focus:ring-2 focus:ring-wedding-gold/60 text-sm">
+        </div>
+
+        <div>
+          <label for="wishMessage" class="block text-xs font-semibold uppercase tracking-wider text-wedding-sagedark mb-1">Twoje Życzenia:</label>
+          <textarea id="wishMessage" rows="4" required maxlength="300" placeholder="Życzymy Wam niegasnącej miłości i uśmiechu na każdy dzień..." 
+                    class="w-full px-4 py-2.5 rounded-xl border border-stone-200 bg-white/80 focus:bg-white focus:outline-none focus:ring-2 focus:ring-wedding-gold/60 text-sm resize-none"></textarea>
+          <p class="text-right text-[10px] text-stone-400 mt-1" id="charCount">0 / 300 znaków</p>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-full bg-wedding-gold text-white font-medium text-xs uppercase tracking-widest shadow-md hover:bg-wedding-gold/90 transition active:scale-98">
+          Przekaż Życzenia
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass-card px-6 py-3 rounded-full shadow-2xl border border-wedding-gold text-xs sm:text-sm font-medium text-wedding-charcoal flex items-center gap-2 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <span id="toastIcon">✨</span>
+    <span id="toastMessage">Wiadomość</span>
+  </div>
+
+  <footer class="relative z-20 text-center py-8 text-xs text-stone-400 tracking-wider">
+    <p>Z miłością na całe życie • 10.04.2027, godz. 14:00</p>
+  </footer>
+
+  <script>
+    // Wedding Date: April 10, 2027 at exactly 14:00 Polish Time (CEST / UTC+2)
+    const WEDDING_TIMESTAMP = new Date('2027-04-10T14:00:00+02:00').getTime();
+
+    const daysEl = document.getElementById('countDays');
+    const hoursEl = document.getElementById('countHours');
+    const minsEl = document.getElementById('countMinutes');
+    const secsEl = document.getElementById('countSeconds');
+    const gridEl = document.getElementById('countdownGrid');
+    const weddingArrivedEl = document.getElementById('weddingArrived');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = WEDDING_TIMESTAMP - now;
+
+      if (distance <= 0) {
+        if (gridEl) gridEl.classList.add('hidden');
+        if (weddingArrivedEl) weddingArrivedEl.classList.remove('hidden');
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(minutes).padStart(2, '0');
+      secsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const canvas = document.getElementById('petalsCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const PETAL_COUNT = 38;
+    const petals = [];
+
+    // Sakura / Rose petal colors
+    const petalColors = [
+      'rgba(244, 215, 215, 0.75)',
+      'rgba(255, 230, 235, 0.85)',
+      'rgba(247, 198, 206, 0.7)',
+      'rgba(253, 242, 242, 0.9)',
+      'rgba(215, 177, 177, 0.65)'
+    ];
+
+    class Petal {
+      constructor() {
+        this.reset(true);
+      }
+
+      reset(init = false) {
+        this.x = Math.random() * width;
+        this.y = init ? Math.random() * height : -20;
+        this.size = Math.random() * 9 + 8;
+        this.speedY = Math.random() * 1.2 + 0.8;
+        this.speedX = Math.random() * 0.8 - 0.2;
+        this.angle = Math.random() * 360;
+        this.angularSpeed = (Math.random() - 0.5) * 0.03;
+        this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+        this.oscillation = Math.random() * 20;
+        this.oscillationSpeed = Math.random() * 0.02 + 0.01;
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += Math.sin(this.oscillation) * 0.8 + this.speedX;
+        this.oscillation += this.oscillationSpeed;
+        this.angle += this.angularSpeed;
+
+        if (this.y > height + 20 || this.x > width + 20 || this.x < -20) {
+          this.reset(false);
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.size / 2, -this.size / 2, -this.size / 2, this.size / 2, 0, this.size);
+        ctx.bezierCurveTo(this.size / 2, this.size / 2, this.size / 2, -this.size / 2, 0, 0);
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.3)';
+        ctx.shadowBlur = 3;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < PETAL_COUNT; i++) {
+      petals.push(new Petal());
+    }
+
+    function animatePetals() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < petals.length; i++) {
+        petals[i].update();
+        petals[i].draw();
+      }
+      requestAnimationFrame(animatePetals);
+    }
+    requestAnimationFrame(animatePetals);
+
+    function spawnHearts(originX, originY, count = 12) {
+      const symbols = ['🌸', '🤍', '✨', '🌿', '💍'];
+      for (let i = 0; i < count; i++) {
+        const particle = document.createElement('span');
+        particle.className = 'burst-heart text-base sm:text-lg select-none';
+        particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * 110 + 40;
+        const tx = Math.cos(angle) * dist;
+        const ty = Math.sin(angle) * dist - 40;
+        const rot = (Math.random() - 0.5) * 60;
+
+        particle.style.left = `${originX}px`;
+        particle.style.top = `${originY}px`;
+        particle.style.setProperty('--tw-tx', `${tx}px`);
+        particle.style.setProperty('--tw-ty', `${ty}px`);
+        particle.style.setProperty('--tw-tr', `${rot}deg`);
+
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1400);
+      }
+    }
+
+    window.addEventListener('click', (e) => {
+      if (['INPUT', 'TEXTAREA', 'BUTTON', 'A'].includes(e.target.tagName)) return;
+      spawnHearts(e.clientX, e.clientY, 8);
+    });
+
+    document.getElementById('triggerConfettiBtn').addEventListener('click', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      spawnHearts(rect.left + rect.width / 2, rect.top, 24);
+      showToast('Wszystkiego najpiękniejszego na Nowej Drodze Życia! 🌸', '💍');
+    });
+
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyTimer = null;
+
+    const musicBtn = document.getElementById('musicToggleBtn');
+    const musicIcon = document.getElementById('musicIcon');
+    const musicLabel = document.getElementById('musicLabel');
+    const musicWave = document.getElementById('musicWave');
+
+    const melodyNotes = [
+      277.18, // C#4
+      329.63, // E4
+      369.99, // F#4
+      415.30, // G#4
+      493.88, // B4
+      554.37, // C#5
+      659.25, // E5
+      739.99  // F#5
+    ];
+
+    function playMusicBoxChime(freq) {
+      if (!audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        const now = audioCtx.currentTime;
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.exponentialRampToValueAtTime(0.08, now + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.2);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 2.3);
+      } catch (err) {
+        console.error("Audio error:", err);
+      }
+    }
+
+    function startMelodyLoop() {
+      let step = 0;
+      melodyTimer = setInterval(() => {
+        const note = melodyNotes[step % melodyNotes.length];
+        playMusicBoxChime(note);
+        
+        if (Math.random() > 0.45) {
+          setTimeout(() => {
+            const harmony = melodyNotes[(step + 2) % melodyNotes.length];
+            playMusicBoxChime(harmony);
+          }, 240);
+        }
+
+        step = (step + 1 + Math.floor(Math.random() * 2)) % melodyNotes.length;
+      }, 750);
+    }
+
+    function toggleMusic() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      if (!isPlaying) {
+        isPlaying = true;
+        startMelodyLoop();
+        musicLabel.textContent = "Gra";
+        musicIcon.textContent = "🌸";
+        musicWave.classList.remove('hidden');
+        showToast('Włączono romantyczną melodię dzwonków', '🎶');
+      } else {
+        isPlaying = false;
+        clearInterval(melodyTimer);
+        musicLabel.textContent = "Melodia";
+        musicIcon.textContent = "🎵";
+        musicWave.classList.add('hidden');
+        showToast('Wyciszono melodię', '🔇');
+      }
+    }
+
+    musicBtn.addEventListener('click', toggleMusic);
+
+    const calendarBtn = document.getElementById('calendarBtn');
+    const calendarMenu = document.getElementById('calendarMenu');
+    const googleCalLink = document.getElementById('googleCalLink');
+    const iCalBtn = document.getElementById('iCalBtn');
+
+    calendarBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      calendarMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', () => {
+      calendarMenu.classList.add('hidden');
+    });
+
+    // Event: 2027-04-10 14:00 to 2027-04-11 04:00 Polish Time (UTC+2) -> 20270410T120000Z to 20270411T020000Z
+    const gCalTitle = encodeURIComponent("Ślub Agnieszki i Jakuba 💍");
+    const gCalDetails = encodeURIComponent("Świętujemy ślub Agnieszki i Jakuba! Ceremonia rozpoczyna się o godz. 14:00.");
+    const gCalLocation = encodeURIComponent("Polska");
+    const gCalDates = "20270410T120000Z/20270411T020000Z";
+    googleCalLink.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${gCalTitle}&dates=${gCalDates}&details=${gCalDetails}&location=${gCalLocation}`;
+
+    iCalBtn.addEventListener('click', () => {
+      const icsContent = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Slub Agnieszki i Jakuba//PL",
+        "CALSCALE:GREGORIAN",
+        "BEGIN:VEVENT",
+        "SUMMARY:Ślub Agnieszki i Jakuba 💍",
+        "DESCRIPTION:Świętujemy ślub Agnieszki i Jakuba o godz. 14:00!",
+        "DTSTART:20270410T120000Z",
+        "DTEND:20270411T020000Z",
+        "LOCATION:Polska",
+        "STATUS:CONFIRMED",
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join("\r\n");
+
+      const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute("download", "Slub_Agnieszka_i_Jakub.ics");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Pobrano plik kalendarza (.ics)', '📅');
+    });
+
+    const STORAGE_KEY = 'wedding_wishes_agnieszka_jakub';
+    const wishesContainer = document.getElementById('wishesContainer');
+    const emptyWishesNotice = document.getElementById('emptyWishesNotice');
+    const wishModal = document.getElementById('wishModal');
+    const modalBox = document.getElementById('modalBox');
+    const openWishModalBtn = document.getElementById('openWishModalBtn');
+    const closeWishModalBtn = document.getElementById('closeWishModalBtn');
+    const wishForm = document.getElementById('wishForm');
+    const authorNameInput = document.getElementById('authorName');
+    const wishMessageInput = document.getElementById('wishMessage');
+    const charCountEl = document.getElementById('charCount');
+
+    const defaultWishes = [
+      {
+        id: '1',
+        author: 'Świadkowie i Przyjaciele',
+        message: 'Niech każdy wspólny dzień będzie tak pełen słońca, jak ten kwietniowy poranek! Odliczamy do 14:00 razem z Wami!',
+        date: 'Wiosna 2027'
+      },
+      {
+        id: '2',
+        author: 'Rodzina',
+        message: 'Agnieszko i Jakubie, budujcie swoje wspólne jutro na fundamencie cierpliwości, serdeczności i najszczerszej miłości.',
+        date: 'Wiosna 2027'
+      }
+    ];
+
+    function getWishes() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          return JSON.parse(stored);
+        }
+      } catch (e) {
+        console.warn('localStorage access failed, fallback to defaults');
+      }
+      return defaultWishes;
+    }
+
+    function saveWishes(wishes) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+      } catch (e) {
+        console.warn('Could not save to localStorage', e);
+      }
+    }
+
+    function renderWishes() {
+      const wishes = getWishes();
+      wishesContainer.innerHTML = '';
+
+      if (!wishes || wishes.length === 0) {
+        emptyWishesNotice.classList.remove('hidden');
+        return;
+      }
+      emptyWishesNotice.classList.add('hidden');
+
+      wishes.forEach(wish => {
+        const card = document.createElement('div');
+        card.className = "glass-card p-5 rounded-2xl border border-wedding-gold/30 shadow-sm flex flex-col justify-between hover:shadow-md transition relative group";
+        
+        const safeAuthor = document.createTextNode(wish.author).textContent;
+        const safeMessage = document.createTextNode(wish.message).textContent;
+        const safeDate = document.createTextNode(wish.date || '').textContent;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase font-semibold text-wedding-sagedark tracking-wider">${safeAuthor}</span>
+              <span class="text-[10px] text-stone-400 font-sans">${safeDate}</span>
+            </div>
+            <p class="font-serif italic text-stone-700 text-sm leading-relaxed">„${safeMessage}”</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-wedding-gold/20 flex items-center justify-between text-xs text-wedding-gold">
+            <span>💌 Z całego serca</span>
+            <span class="text-sm">🌸</span>
+          </div>
+        `;
+        wishesContainer.appendChild(card);
+      });
+    }
+
+    function openModal() {
+      wishModal.classList.remove('hidden');
+      setTimeout(() => {
+        wishModal.classList.remove('opacity-0');
+        modalBox.classList.remove('scale-95');
+        modalBox.classList.add('scale-100');
+        authorNameInput.focus();
+      }, 20);
+    }
+
+    function closeModal() {
+      wishModal.classList.add('opacity-0');
+      modalBox.classList.remove('scale-100');
+      modalBox.classList.add('scale-95');
+      setTimeout(() => {
+        wishModal.classList.add('hidden');
+      }, 300);
+    }
+
+    openWishModalBtn.addEventListener('click', openModal);
+    closeWishModalBtn.addEventListener('click', closeModal);
+    wishModal.addEventListener('click', (e) => {
+      if (e.target === wishModal) closeModal();
+    });
+
+    wishMessageInput.addEventListener('input', () => {
+      charCountEl.textContent = `${wishMessageInput.value.length} / 300 znaków`;
+    });
+
+    wishForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const author = authorNameInput.value.trim();
+      const message = wishMessageInput.value.trim();
+
+      if (!author || !message) return;
+
+      const newWish = {
+        id: Date.now().toString(),
+        author: author,
+        message: message,
+        date: new Date().toLocaleDateString('pl-PL')
+      };
+
+      const wishes = getWishes();
+      wishes.unshift(newWish);
+      saveWishes(wishes);
+      renderWishes();
+
+      wishForm.reset();
+      charCountEl.textContent = "0 / 300 znaków";
+      closeModal();
+      showToast('Dziękujemy! Twoje życzenia zostały zapisane 🕊️', '💌');
+      spawnHearts(window.innerWidth / 2, window.innerHeight / 2, 20);
+    });
+
+    let toastTimeout;
+    function showToast(message, icon = '✨') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastMessage.textContent = message;
+      toastIcon.textContent = icon;
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    renderWishes();
+  </script>
+</body>
+</html>
